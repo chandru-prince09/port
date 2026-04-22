@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="VS Code">
+  <rect width="96" height="96" rx="20" fill="#eff6ff"/>
+  <rect x="10" y="10" width="76" height="76" rx="16" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="48" y="54" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1d4ed8">VS</text>
+  <text x="48" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1d4ed8">CODE</text>
+</svg>

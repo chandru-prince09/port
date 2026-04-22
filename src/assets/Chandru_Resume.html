@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chandru S - Professional Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;600&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #f3f4f6; 
+            padding: 40px; 
+            color: #333;
+        }
+        .resume-container { 
+            width: 210mm; 
+            max-width: 100%;
+            min-height: 297mm; 
+            background: white; 
+            margin: 0 auto; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1); 
+            padding: 60px; 
+            box-sizing: border-box; 
+            border-top: 10px solid #8B5CF6;
+        }
+        
+        h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+        
+        h1 { color: #111; font-size: 54px; margin-bottom: 5px; margin-top: 0; font-weight: 800; letter-spacing: -1px; }
+        h1 span { color: #8B5CF6; }
+        
+        h2 { 
+            color: #111; 
+            font-size: 24px; 
+            border-bottom: 2px solid #e5e7eb; 
+            padding-bottom: 15px; 
+            margin-top: 40px; 
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: -2px;
+            width: 60px; height: 2px;
+            background: #8B5CF6;
+        }
+        
+        h3 { color: #8B5CF6; font-size: 18px; margin-bottom: 5px; font-weight: 600; }
+        
+        p { color: #555; line-height: 1.6; margin-top: 0; font-size: 15px; }
+        
+        .header { 
+            text-align: center; 
+            padding-bottom: 30px; 
+        }
+        .contact { 
+            display: flex; 
+            justify-content: center; 
+            gap: 25px; 
+            color: #666; 
+            font-size: 14px; 
+            margin-top: 15px; 
+            flex-wrap: wrap;
+        }
+        .contact span {
+            display: flex; align-items: center; gap: 5px;
+        }
+        
+        .grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+        }
+        
+        .skills-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .skill-badge { 
+            background: rgba(139, 92, 246, 0.1); 
+            padding: 6px 16px; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            color: #8B5CF6; 
+            font-size: 13px; 
+        }
+        
+        .timeline-item { position: relative; padding-left: 20px; border-left: 2px solid #e5e7eb; margin-bottom: 25px; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px; top: 5px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: #8B5CF6;
+        }
+        
+        .meta-text {
+            color: #888;
+            font-size: 13px;
+            font-style: italic;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: #8B5CF6;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+            transition: transform 0.2s;
+        }
+        .print-btn:hover { transform: translateY(-3px); }
+
+        @media print {
+            body { padding: 0; background: white; }
+            .resume-container { box-shadow: none; border-top: none; width: auto; min-height: auto; padding: 10mm; }
+            .print-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">📥 Download as PDF</button>
+
+    <div class="resume-container">
+        <div class="header">
+            <h1>Chandru <span>S</span></h1>
+            <p style="font-size: 20px; color: #555; font-weight: 600; margin-top: 10px;">Full-Stack Software Developer</p>
+            <div class="contact">
+                <span>📍 Chennai, India</span>
+                <span>✉️ developer@portfolio.com</span>
+                <span>📱 +91 73586 24186</span>
+                <span>🔗 github.com/chandru</span>
+            </div>
+        </div>
+
+        <h2>Professional Profile</h2>
+        <p>I am a passionate and highly dedicated Junior Software Developer specializing in building high-performance, visually stunning web and mobile applications. With expertise in modern frontend frameworks and a solid foundation in Backend architectures, I consistently strive to engineer seamless, scalable, and user-centric digital experiences.</p>
+
+        <div class="grid">
+            <div>
+                <h2>Education</h2>
+                
+                <div class="timeline-item">
+                    <h3>Bachelor of Engineering (Computer Science)</h3>
+                    <span class="meta-text">EGS Pillay Engineering College | 2023 - 2027</span>
+                    <p>Currently maintaining a high GPA and specializing in Web Technologies, Software Architecture, and Data Structures.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Higher Secondary Education</h3>
+                    <span class="meta-text">Global Excellence Academy | Graduated 2023</span>
+                    <p>Graduated top of class with advanced coursework in pure Mathematics and Computer Science.</p>
+                </div>
+            </div>
+
+            <div>
+                <h2>Professional Experience</h2>
+                
+                <div class="timeline-item">
+                    <h3>Software Developer Intern</h3>
+                    <span class="meta-text">Tech Innovators Corp | 2024 - Present</span>
+                    <p>
+                        - Engineered robust web solutions using Angular, improving page load speeds.<br>
+                        - Collaborated with UI/UX teams to implement pixel-perfect dark mode themes.<br>
+                        - Developed responsive and secure RESTful APIs consumed by multiple clients.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Freelance Web Designer</h3>
+                    <span class="meta-text">Self-Employed | 2023 - 2024</span>
+                    <p>
+                        - Designed and deployed custom responsive landing pages for local businesses.<br>
+                        - Ensured 100% Lighthouse SEO and Accessibility scores for all delivered client sites.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Core Expertise & Technologies</h2>
+        <div class="skills-list">
+            <span class="skill-badge">Angular 19</span>
+            <span class="skill-badge">Javascript (ES6+)</span>
+            <span class="skill-badge">Typescript</span>
+            <span class="skill-badge">HTML5/CSS3</span>
+            <span class="skill-badge">Node.js</span>
+            <span class="skill-badge">Bootstrap 5</span>
+            <span class="skill-badge">Git & Version Control</span>
+            <span class="skill-badge">REST APIs</span>
+            <span class="skill-badge">Figma</span>
+            <span class="skill-badge">Responsive UI/UX</span>
+        </div>
+        
+    </div>
+</body>
+</html>
