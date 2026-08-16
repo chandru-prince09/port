@@ -24,6 +24,17 @@ export class App implements OnInit {
 
   ngOnInit() {
     if (!this.isBrowser) return;
+    
+    // Global mouse tracking for 3D landing page effect
+    window.addEventListener('mousemove', (e) => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const tiltX = (e.clientY - centerY) / centerY; // -1 to 1
+      const tiltY = (e.clientX - centerX) / centerX; // -1 to 1
+      
+      document.body.style.setProperty('--global-tilt-x', `${-tiltX * 10}deg`);
+      document.body.style.setProperty('--global-tilt-y', `${tiltY * 10}deg`);
+    });
   }
 
   startPortfolio() {
