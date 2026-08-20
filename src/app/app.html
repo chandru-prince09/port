@@ -1,14 +1,38 @@
 @if (showLanding()) {
-<!-- Simple Loading Splash Screen -->
-<div
-  class="landing-page d-flex align-items-center justify-content-center flex-column min-vh-100 w-100 position-relative overflow-hidden"
-  style="background-color: #030712 !important;">
-  <div class="text-center z-3 position-relative delayed-fade-in">
-    <img src="images/logo.png" alt="Logo" height="80" class="mb-4 rounded shadow-lg">
-    <div class="d-flex align-items-center justify-content-center gap-3 mt-3">
-      <div class="spinner-border text-info spinner-border-sm" role="status"></div>
-      <span class="text-white-50 fw-bold text-uppercase small" style="letter-spacing: 2px;">Welcome</span>
+<!-- Stylish Futuristic Splash / Refresh Screen -->
+<div class="splash-screen d-flex align-items-center justify-content-center flex-column min-vh-100 w-100 position-relative overflow-hidden">
+  <!-- Glowing Ambient Background Orbs -->
+  <div class="splash-orb orb-1"></div>
+  <div class="splash-orb orb-2"></div>
+  
+  <div class="text-center z-3 position-relative splash-content px-4">
+    <!-- Animated Logo / Monogram Badge -->
+    <div class="splash-badge-wrapper mb-4">
+      <div class="splash-logo-ring">
+        <img src="images/logo.png" alt="Chandru S" class="splash-logo shadow-2xl">
+      </div>
     </div>
+
+    <!-- Tagline & Name -->
+    <div class="splash-tagline-pill mb-3 mx-auto">
+      <span class="pulse-dot me-2"></span>
+      <span class="tagline-text">PORTFOLIO OF</span>
+    </div>
+    
+    <h1 class="splash-title mb-2">
+      <span class="gradient-name">Chandru S</span>
+    </h1>
+    
+    <p class="splash-subtitle mb-4">
+      Full-Stack Developer & Problem Solver
+    </p>
+
+    <!-- Sleek Progress Bar -->
+    <div class="splash-loader-container mx-auto">
+      <div class="splash-loader-bar"></div>
+    </div>
+    
+    <span class="splash-loading-text mt-3 d-block">Entering Portfolio...</span>
   </div>
 </div>
 } @else {
