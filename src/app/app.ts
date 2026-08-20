@@ -35,6 +35,11 @@ export class App implements OnInit {
       document.body.style.setProperty('--global-tilt-x', `${-tiltX * 10}deg`);
       document.body.style.setProperty('--global-tilt-y', `${tiltY * 10}deg`);
     });
+
+    // Automatically skip the loading screen after a short delay
+    setTimeout(() => {
+      this.startPortfolio();
+    }, 1500);
   }
 
   startPortfolio() {

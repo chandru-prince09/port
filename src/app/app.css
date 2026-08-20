@@ -56,7 +56,7 @@
 
 :host {
   display: block;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Outfit', system-ui, sans-serif;
   color: var(--text-bright) !important;
   background-color: var(--bg-main);
   min-height: 100vh;
@@ -234,7 +234,7 @@ body::after {
 }
 
 .title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-weight: 900 !important;
   letter-spacing: -4px;
   line-height: 1.1;
@@ -832,15 +832,7 @@ section {
   display: block;
 }
 
-/* Hide default cursor on desktop when using custom cursor */
-@media (hover: hover) and (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  a, button, .btn, input, textarea {
-    cursor: none;
-  }
-}
+/* Custom cursor effect is decorative; default cursor remains visible for better UX */
 
 
 /* Final Section Polishing */
