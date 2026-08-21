@@ -1,10 +1,10 @@
 import { Component, signal, OnInit, HostListener, Inject, PLATFORM_ID, NgZone } from '@angular/core';
-import { isPlatformBrowser, DOCUMENT } from '@angular/common';
+import { isPlatformBrowser, DOCUMENT, CommonModule } from '@angular/common';
 import { initSplashCursor } from './splash-cursor';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -12,7 +12,21 @@ export class App implements OnInit {
   protected readonly title = signal('portfolio');
   public showLanding = signal(true);
   public showResume = signal(false);
+  public loadingProgress = signal(0);
+  public currentFontStyle = signal('hologram');
   private isBrowser: boolean;
+  private progressInterval: any = null;
+  private autoCycleInterval: any = null;
+  private userSelectedStyle = false;
+
+  readonly fontStyles = [
+    { id: 'hologram', label: 'Holographic', font: 'Syne', badge: '💎 Hologram', desc: 'Avant-Garde Gradient' },
+    { id: 'neon', label: 'Cyber Neon', font: 'Orbitron', badge: '⚡ Cyber Neon', desc: 'Glowing Matrix Laser' },
+    { id: 'luxury', label: 'Royal Luxury', font: 'Cinzel', badge: '👑 Royal Gold', desc: '24K Metallic Serif' },
+    { id: 'scifi', label: 'Sci-Fi Future', font: 'Space Grotesk', badge: '🚀 Futuristic', desc: 'Modern High-Tech' },
+    { id: 'editorial', label: 'Luxury Italic', font: 'Playfair Display', badge: '✨ Luxury Italic', desc: 'High-Fashion Cursive' },
+    { id: 'synthwave', label: 'Synthwave', font: 'Rajdhani', badge: '🔥 Synthwave', desc: 'Sunset Retro Pulse' }
+  ];
 
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
@@ -36,10 +50,63 @@ export class App implements OnInit {
       document.body.style.setProperty('--global-tilt-y', `${tiltY * 10}deg`);
     });
 
-    // Automatically transition from splash/refresh screen directly to home page
-    setTimeout(() => {
-      this.startPortfolio();
-    }, 2200);
+    // Start animated progress and multi-style transition for the refresh page
+    this.runRefreshLoader();
+  }
+
+  triggerRefresh() {
+    this.showLanding.set(true);
+    this.userSelectedStyle = false;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    this.runRefreshLoader();
+  }
+
+  setFontStyle(styleId: string) {
+    this.currentFontStyle.set(styleId);
+    this.userSelectedStyle = true;
+  }
+
+  runRefreshLoader() {
+    if (this.progressInterval) clearInterval(this.progressInterval);
+    if (this.autoCycleInterval) clearInterval(this.autoCycleInterval);
+
+    this.loadingProgress.set(0);
+    const totalDurationMs = 2600;
+    const intervalStepMs = 35;
+    const increment = 100 / (totalDurationMs / intervalStepMs);
+
+    let current = 0;
+    let cycleIndex = 0;
+
+    // Cycle through font styles dynamically if user hasn't manually clicked one
+    this.autoCycleInterval = setInterval(() => {
+      if (!this.userSelectedStyle) {
+        cycleIndex = (cycleIndex + 1) % this.fontStyles.length;
+        this.currentFontStyle.set(this.fontStyles[cycleIndex].id);
+      }
+    }, 550);
+
+    this.progressInterval = setInterval(() => {
+      current += increment;
+      if (current >= 100) {
+        current = 100;
+        this.loadingProgress.set(100);
+        clearInterval(this.progressInterval);
+        clearInterval(this.autoCycleInterval);
+        setTimeout(() => {
+          this.startPortfolio();
+        }, 250);
+      } else {
+        this.loadingProgress.set(Math.floor(current));
+      }
+    }, intervalStepMs);
+  }
+
+  skipRefresh() {
+    if (this.progressInterval) clearInterval(this.progressInterval);
+    if (this.autoCycleInterval) clearInterval(this.autoCycleInterval);
+    this.loadingProgress.set(100);
+    this.startPortfolio();
   }
 
   startPortfolio() {

@@ -1,51 +1,110 @@
 @if (showLanding()) {
-<!-- Stylish Futuristic Splash / Refresh Screen -->
+<!-- Futuristic Multi-Style Splash / Refresh Page -->
 <div class="splash-screen d-flex align-items-center justify-content-center flex-column min-vh-100 w-100 position-relative overflow-hidden">
-  <!-- Glowing Ambient Background Orbs -->
+  <!-- Glowing Ambient Background Orbs & Cyber Grid -->
+  <div class="splash-cyber-grid"></div>
   <div class="splash-orb orb-1"></div>
   <div class="splash-orb orb-2"></div>
+  <div class="splash-orb orb-3"></div>
+  <div class="splash-orb orb-4"></div>
+
+  <!-- Refresh Top Controls Bar -->
+  <div class="splash-top-bar d-flex justify-content-between align-items-center w-100 px-4 px-md-5 position-absolute top-0 start-0 pt-4 z-3">
+    <div class="splash-system-status d-flex align-items-center gap-2">
+      <span class="status-pulse-dot"></span>
+      <span class="status-text">INITIALIZING CHANDRU S. PORTFOLIO</span>
+    </div>
+    <button class="splash-skip-btn btn btn-sm rounded-pill px-3 py-1 text-white border-0" (click)="skipRefresh()">
+      Skip Intro <i class="bi bi-arrow-right ms-1">→</i>
+    </button>
+  </div>
   
-  <div class="text-center z-3 position-relative splash-content px-4">
+  <div class="text-center z-3 position-relative splash-content px-3 px-md-4 my-auto">
     <!-- Animated Logo / Monogram Badge -->
-    <div class="splash-badge-wrapper mb-4">
+    <div class="splash-badge-wrapper mb-3">
       <div class="splash-logo-ring">
         <img src="images/logo.png" alt="Chandru S" class="splash-logo shadow-2xl">
       </div>
+      <div class="splash-ring-particle"></div>
     </div>
 
-    <!-- Tagline & Name -->
-    <div class="splash-tagline-pill mb-3 mx-auto">
-      <span class="pulse-dot me-2"></span>
-      <span class="tagline-text">PORTFOLIO OF</span>
+    <!-- Font Style Selector Chips -->
+    <div class="splash-font-picker mb-4 mx-auto d-flex flex-wrap justify-content-center gap-2">
+      @for (style of fontStyles; track style.id) {
+        <button 
+          type="button"
+          class="font-style-pill btn btn-sm"
+          [class.active]="currentFontStyle() === style.id"
+          (click)="setFontStyle(style.id)"
+          [title]="style.desc">
+          {{ style.badge }}
+        </button>
+      }
+    </div>
+
+    <!-- Dynamic Multi-Font "PORTFOLIO OF CHANDRU" Typography Display -->
+    <div class="splash-name-container mb-3" [class]="'font-theme-' + currentFontStyle()">
+      <div class="splash-prefix-wrapper mb-1">
+        <span class="splash-prefix-text">PORTFOLIO OF</span>
+      </div>
+      
+      <h1 class="splash-main-title mb-1">
+        <span class="splash-first-name">CHANDRU</span>
+        <span class="splash-last-initial ms-2">S</span>
+      </h1>
+      
+      <div class="splash-font-signature">
+        <span class="signature-tag">✦ CREATIVE FULL-STACK DEVELOPER ✦</span>
+      </div>
     </div>
     
-    <h1 class="splash-title mb-2">
-      <span class="gradient-name">Chandru S</span>
-    </h1>
-    
-    <p class="splash-subtitle mb-4">
-      Full-Stack Developer & Problem Solver
+    <p class="splash-subtitle mb-4 mx-auto">
+      Crafting High-Performance Modern Web Applications & Digital Experiences
     </p>
 
-    <!-- Sleek Progress Bar -->
-    <div class="splash-loader-container mx-auto">
-      <div class="splash-loader-bar"></div>
+    <!-- Sleek Progress Bar & Counter -->
+    <div class="splash-progress-wrapper mx-auto mb-3">
+      <div class="splash-loader-container">
+        <div class="splash-loader-bar" [style.width.%]="loadingProgress()">
+          <span class="loader-laser-flare"></span>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mt-2 px-1 splash-meta-info">
+        <div class="equalizer-waves d-flex align-items-center gap-1">
+          <span class="wave-bar w1"></span>
+          <span class="wave-bar w2"></span>
+          <span class="wave-bar w3"></span>
+          <span class="wave-bar w4"></span>
+        </div>
+        <span class="splash-percent-text">{{ loadingProgress() }}%</span>
+        <span class="splash-status-label">READY TO EXPLORE</span>
+      </div>
     </div>
-    
-    <span class="splash-loading-text mt-3 d-block">Entering Portfolio...</span>
+
+    <!-- Action Button -->
+    <div class="mt-2">
+      <button class="btn splash-enter-btn rounded-pill px-4 py-2" (click)="skipRefresh()">
+        <span>Enter Portfolio</span>
+        <span class="enter-btn-arrow ms-2">→</span>
+      </button>
+    </div>
   </div>
 </div>
 } @else {
 @if (!showResume()) {
-<!-- Simple Floating Bottom Menu -->
+<!-- Simple Floating Bottom Menu with Refresh Trigger -->
 <nav class="fixed-bottom mb-4 d-flex justify-content-center" style="z-index: 1030; pointer-events: none;">
   <div
-    class="nav-links d-flex align-items-center gap-2 gap-md-4 rounded-pill px-4 py-2 shadow-lg border border-white border-opacity-10"
-    style="background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(15px); pointer-events: auto;">
+    class="nav-links d-flex align-items-center gap-2 gap-md-3 rounded-pill px-4 py-2 shadow-lg border border-white border-opacity-10"
+    style="background: rgba(10, 10, 10, 0.75); backdrop-filter: blur(15px); pointer-events: auto;">
     <a class="nav-link" href="#home">Home</a>
     <a class="nav-link" href="#about">About</a>
     <a class="nav-link" href="#skills">Skills</a>
     <a class="nav-link" href="#contact">Contact</a>
+    <button class="nav-link nav-refresh-btn btn btn-link p-0 text-decoration-none d-flex align-items-center gap-1 text-white opacity-75 hover-opacity-100" (click)="triggerRefresh()" title="Replay Refresh Splash Screen">
+      <span class="refresh-icon">🔄</span>
+      <span class="d-none d-sm-inline">Refresh</span>
+    </button>
   </div>
 </nav>
 
