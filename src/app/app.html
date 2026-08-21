@@ -28,22 +28,8 @@
       <div class="splash-ring-particle"></div>
     </div>
 
-    <!-- Font Style Selector Chips -->
-    <div class="splash-font-picker mb-4 mx-auto d-flex flex-wrap justify-content-center gap-2">
-      @for (style of fontStyles; track style.id) {
-        <button 
-          type="button"
-          class="font-style-pill btn btn-sm"
-          [class.active]="currentFontStyle() === style.id"
-          (click)="setFontStyle(style.id)"
-          [title]="style.desc">
-          {{ style.badge }}
-        </button>
-      }
-    </div>
-
-    <!-- Dynamic Multi-Font "PORTFOLIO OF CHANDRU" Typography Display -->
-    <div class="splash-name-container mb-3" [class]="'font-theme-' + currentFontStyle()">
+    <!-- Dynamic Stylized "PORTFOLIO OF CHANDRU" Typography Display -->
+    <div class="splash-name-container mb-3 font-theme-stylish">
       <div class="splash-prefix-wrapper mb-1">
         <span class="splash-prefix-text">PORTFOLIO OF</span>
       </div>
@@ -63,7 +49,7 @@
     </p>
 
     <!-- Sleek Progress Bar & Counter -->
-    <div class="splash-progress-wrapper mx-auto mb-3">
+    <div class="splash-progress-wrapper mx-auto mb-2">
       <div class="splash-loader-container">
         <div class="splash-loader-bar" [style.width.%]="loadingProgress()">
           <span class="loader-laser-flare"></span>
@@ -77,16 +63,8 @@
           <span class="wave-bar w4"></span>
         </div>
         <span class="splash-percent-text">{{ loadingProgress() }}%</span>
-        <span class="splash-status-label">READY TO EXPLORE</span>
+        <span class="splash-status-label">ENTERING PORTFOLIO</span>
       </div>
-    </div>
-
-    <!-- Action Button -->
-    <div class="mt-2">
-      <button class="btn splash-enter-btn rounded-pill px-4 py-2" (click)="skipRefresh()">
-        <span>Enter Portfolio</span>
-        <span class="enter-btn-arrow ms-2">→</span>
-      </button>
     </div>
   </div>
 </div>
